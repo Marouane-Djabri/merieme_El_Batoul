@@ -1,7 +1,6 @@
 import Facebook from "../assets/facebook_icon.svg"
 import Instagram from "../assets/instagram_icon.svg"
 import Telegram from "../assets/telegram_icon.svg"
-import { Fragment } from "react";
 
 export default function UpperBar() {
     return (
