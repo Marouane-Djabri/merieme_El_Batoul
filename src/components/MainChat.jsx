@@ -1,6 +1,7 @@
 // Main.jsx
 import React from 'react';
 import Chat from './Chat';
+import Header from './Header';
 
 const MainChat = () => {
   return (

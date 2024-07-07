@@ -19,30 +19,31 @@
 // }
 
 // export default App;
-App.jsx
-import React, { useState } from 'react';
-import Sidebar from './components/Sidebar';
-import Header from './components/Header';
-import Main from './components/Main';
+// App.jsx
+// import React, { useState } from 'react';
+// import Sidebar from './components/Sidebar';
+// import Header from './components/Header';
+// import Main from './components/Main';
 
-export default function App() {
-  const [students] = useState(['مروان جلابي', 'مروان جلابي', 'مروان جلابي', 'مروان جلابي', 'مروان جلابي']);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+// export default function App() {
+//   const [students] = useState(['مروان جلابي', 'مروان جلابي', 'مروان جلابي', 'مروان جلابي', 'مروان جلابي']);
+//   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
-  };
+//   const toggleSidebar = () => {
+//     setIsSidebarOpen(!isSidebarOpen);
+//   };
 
-  return (
-    <div className="flex min-h-screen">
-      <div className={`flex-1 bg-gray-100 ${isSidebarOpen ? 'mr-0' : 'mr-0'}`}>
-        <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
-        <Main students={students} />
-      </div>
-      <Sidebar isOpen={isSidebarOpen} toggle={toggleSidebar} />
-    </div>
-  );
-}
+//   return (
+//     <div className="flex min-h-screen">
+//       <div className={`flex-1 bg-gray-100 ${isSidebarOpen ? 'mr-0' : 'mr-0'}`}>
+//         <Header toggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen} />
+//         <Main students={students} />
+//       </div>
+//       <Sidebar isOpen={isSidebarOpen} toggle={toggleSidebar} />
+//     </div>
+//   );
+// }
+////////////////////////////
 // App.jsx
 // import React, { useState } from 'react';
 // import Sidebar from './components/Sidebar';
@@ -67,26 +68,43 @@ export default function App() {
 //   );
 // }
 // // App.jsx
-// // import React from 'react';
-// // import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-// // import Sidebar from './components/Sidebar';
-// // import Header from './components/Header';
-// // import Main from './components/Main';
-// // import MainChat from './components/MainChat';
+// import React from 'react';
+// import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+// import Sidebar from './components/Sidebar';
+// import Header from './components/Header';
+// import Main from './components/Main';
+// import MainChat from './components/MainChat';
 
-// // export default function App() {
-// //   return (
-// //     <Router>
-// //       <div className="flex min-h-screen">
-// //         <Sidebar />
-// //         <div className="flex-1 bg-gray-100">
-// //           <Header />
-// //           <Switch>
-// //             <Route path="/" exact component={Main} />
-// //             <Route path="/chat" component={MainChat} />
-// //           </Switch>
-// //         </div>
-// //       </div>
-// //     </Router>
-// //   );
-// // }
+// export default function App() {
+//   return (
+//     <Router>
+//       <div className="flex min-h-screen">
+//         <Sidebar />
+//         <div className="flex-1 bg-gray-100">
+//           <Header />
+//           <Switch>
+//             <Route path="/" exact component={Main} />
+//             <Route path="/chat" component={MainChat} />
+//           </Switch>
+//         </div>
+//       </div>
+//     </Router>
+//   );
+// }
+
+import React from 'react';
+import ChatPage from './pages/ChatPage';
+import './App.css'; // Add any global styles you need here
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+      <ChatPage/>
+        {/* <ChooseClass/> */}
+      </header>
+    </div>
+  );
+}
+
+export default App;
