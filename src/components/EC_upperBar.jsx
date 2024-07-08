@@ -1,15 +1,19 @@
+import ClassesButton from '../assets/ClassesButton.svg'
 
-import arroxGauche from '../assets/play_arrow.svg'
 
 export default function EC_upperBar()
 {
     return (
+       <div className="bg-green-500 flex flex-row justify-between">
+        {/*Main div*/}
+        <div className='order-last bg-yellow-400 w-1/6 justify-end '>
+        <img src = {ClassesButton} className='w-7 h-7  '/>
+        </div>
+        <div> القسم1</div>
         <div>
-       <div className="flex flex-row justify-end mr-5 p-4 space-x-4 border-b-4 border-indigo-500">
-            <h1 className='order-last'>الاقسام</h1>
-            <img src = {arroxGauche} className='order-2 self-end px-3'/>
-            <p>قسم</p>
-       </div>
+            <button>الطلاب</button>
+            <button>المحادثة</button>
+        </div>
        </div>
     )
 } 

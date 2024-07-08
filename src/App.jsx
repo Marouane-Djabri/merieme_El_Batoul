@@ -1,9 +1,10 @@
 import HomePage from './pages/HomePage.jsx'
-import Eleve_conver from './pages/Eleve_conver.jsx'
+import SignupLogin from './pages/SignupLogin.jsx'
 export default function App() {
   return (
-     // <HomePage/>
-     <Eleve_conver/>
+     <HomePage/>
+    // <SignupLogin/>
+
   )
 }
 

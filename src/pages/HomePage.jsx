@@ -13,8 +13,8 @@ import About from '../components/AboutUs.jsx'
 export default function HomePage ()
 {
     return (
-        <div className='bg-[#E5E7E6] '>
-    <UpperBar/>
+    <div className='bg-[#E5E7E6] h-[100%]'>
+   <UpperBar/>
    <Hero/>
    <Right/>
    <Info/>
