@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import styled, { keyframes } from 'styled-components';
+import { useAuth } from '../context/AuthContext';
+import { jwtDecode } from "jwt-decode";
+ 
 
+ 
 // Define the hover animation
 const hoverAnimation = keyframes`
   from {
@@ -46,28 +51,68 @@ const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  margin-top: 40px; // Adjust this value to push the buttons further down
+  margin-top: 40px;
 `;
 
-// Create the main component
 const SectionSelector = () => {
-  const sections = [
-    { id: 1, name: 'القسم 1', subject: 'قرآن', teacher: 'الشيخاني', color: '#A52A2A' },
-    { id: 2, name: 'القسم 1', subject: 'قرآن', teacher: 'الشيخاني', color: '#008000' },
-    { id: 3, name: 'القسم 1', subject: 'قرآن', teacher: 'الشيخاني', color: '#D2B48C' },
-    { id: 4, name: 'القسم 1', subject: 'قرآن', teacher: 'الشيخاني', color: '#D2B48C' },
-    { id: 5, name: 'القسم 1', subject: 'قرآن', teacher: 'الشيخاني', color: '#D2B48C' },
-  ];
+  const [sections, setSections] = useState([]);
+  const { token } = useAuth();  
+
+  useEffect(() => {
+    const fetchClasses = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/api/classes');
+        if (Array.isArray(response.data)) {
+          setSections(response.data);
+        } else {
+          console.error('Expected array but received:', response.data);
+        }
+      } catch (error) {
+        console.error('Error fetching classes:', error);
+      }
+    };
+
+    fetchClasses();
+  }, []);
+
+  const handleEnroll = async (classId) => {
+    if (!token) {
+      console.error('User not logged in or token not available');
+      return;
+    }
+
+    try {
+      const decodedToken = jwtDecode(token);
+      const studentId = decodedToken.userId;
+
+      if (!studentId) {
+        console.error('Student ID not available in token');
+        return;
+      }
+
+      const response = await axios.post('http://localhost:5000/api/enrollments', {
+        classId,
+        studentId,
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      console.log('Enrolled successfully:', response.data);
+    } catch (error) {
+      console.error('Error enrolling in class:', error);
+    }
+  };
 
   return (
     <Container>
       <h2>اختر قسما</h2>
       <ButtonContainer>
-        {sections.map((section) => (
-          <SectionButton key={section.id}>
-            <div>{section.name}</div>
-            <div>المادة: {section.subject}</div>
-            <div>المعلم: {section.teacher}</div>
+        {Array.isArray(sections) && sections.map((section) => (
+          <SectionButton key={section._id} onClick={() => handleEnroll(section._id)}>
+            <div>{section.className}</div>
+            <div>المادة: {section.classDescription}</div>
+            <div>المعلم: {section.teacherId.name}</div>
             <ButtonText color={section.color}>اختر</ButtonText>
           </SectionButton>
         ))}
