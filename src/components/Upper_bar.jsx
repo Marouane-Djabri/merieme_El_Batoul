@@ -34,7 +34,7 @@ const Upper_bar  = () =>
                     <CiMenuBurger className="ms:self-center md:hidden cursor-pointer" onClick={ToggleMenu} />
                 </div>
                 {MenuOpen ? (
-                    <ul className="space-y-5 flex flex-col w-fit bg-white absolute top-16 right-0 text-right mr-3 "> 
+                    <ul className="space-y-5 flex flex-col w-fit bg-white absolute top-16 right-0 text-right mr-3  "> 
                     <li className="text-md font-semibold select-none cursor-pointer"> الرئيسية</li>
                     <li className="text-md font-semibold select-none cursor-pointer">عن الجمعية</li>
                     <li className="text-md font-semibold select-none cursor-pointer">هيئة التدريس</li>
