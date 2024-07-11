@@ -3,14 +3,21 @@ import React, { createContext, useContext, useState, useEffect } from "react";
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [token, setToken] = useState(null);
-  const [loading, setLoading] = useState(true);
+  // const [token, setToken] = useState(null);
+  const [token, setToken] = useState('');
 
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
-    setToken(storedToken);
-    setLoading(false);
+    const storedToken = localStorage.getItem('accessToken');
+    if (storedToken) {
+      setToken(storedToken);
+    }
   }, []);
+
+  const login = (newToken) => {
+    setToken(newToken);
+    localStorage.setItem('accessToken', newToken);
+  };
+
 
   return (
     <AuthContext.Provider value={{ token, setToken, loading }}>
@@ -20,6 +27,10 @@ export const AuthProvider = ({ children }) => {
 };
 
 // Custom hook to use the AuthContext
-export const useAuth = () => {
-  return useContext(AuthContext);
+export // Example of a useAuth hook
+const useAuth = () => {
+  const authContext = useContext(AuthContext);
+  // Ensure authContext is always an object
+  return authContext || {};
 };
+

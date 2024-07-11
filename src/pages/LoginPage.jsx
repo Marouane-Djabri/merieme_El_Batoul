@@ -1,21 +1,31 @@
 import React, { useState } from 'react';
 import axios from 'axios';
- 
+import { useNavigate } from 'react-router-dom';
 import QoranIcon from '../assets/QoranIcon.svg';
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const navigate = useNavigate();
+
   const handleLogin = async () => {
     try {
-      const response = await axios.post(' http://localhost:5000/api/login', { username, password });
+      const response = await axios.post('http://localhost:5000/api/login', { username, password });
+
+      // Access the token from response data
       const token = response.data.token;
-      // Store the token in localStorage or cookies
-      localStorage.setItem('token', token);
+      
+      // Store the token in localStorage
+      localStorage.setItem('accessToken', token);
+      
       // Redirect or update the state to indicate the user is logged in
       console.log('Login successful');
-      setSuccessMessage('login successful!');
+      setSuccessMessage('Login successful!');
+      console.log(response.data);
+
+      // Redirect to the desired page
+      navigate('/chooseclass');
     } catch (error) {
       console.error('There was an error logging in!', error);
     }
@@ -30,9 +40,7 @@ export default function LoginPage() {
               <img src={QoranIcon} className="w-10 h-8 self-end order-last" />
               <h1 className="font-bold text-2xl text-orange-900">البتول</h1>
             </div>
-            <div className="mt-0 mr-6 ml-6 flex space-x-2">
-              
-            </div>
+            <div className="mt-0 mr-6 ml-6 flex space-x-2"></div>
           </header>
 
           <div className="flex justify-center items-center flex-grow">

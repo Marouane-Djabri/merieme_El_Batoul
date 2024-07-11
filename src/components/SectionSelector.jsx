@@ -3,9 +3,8 @@ import axios from 'axios';
 import styled, { keyframes } from 'styled-components';
 import { useAuth } from '../context/AuthContext';
 import { jwtDecode } from "jwt-decode";
- 
 
- 
+
 // Define the hover animation
 const hoverAnimation = keyframes`
   from {
@@ -54,10 +53,10 @@ const ButtonContainer = styled.div`
   margin-top: 40px;
 `;
 
+
 const SectionSelector = () => {
   const [sections, setSections] = useState([]);
-  const { token } = useAuth();  
-
+  
   useEffect(() => {
     const fetchClasses = async () => {
       try {
@@ -76,6 +75,10 @@ const SectionSelector = () => {
   }, []);
 
   const handleEnroll = async (classId) => {
+    // Fetch the token directly from local storage
+    const token = localStorage.getItem('accessToken');
+    console.log('Token from local storage:', token);
+
     if (!token) {
       console.error('User not logged in or token not available');
       return;
@@ -112,7 +115,7 @@ const SectionSelector = () => {
           <SectionButton key={section._id} onClick={() => handleEnroll(section._id)}>
             <div>{section.className}</div>
             <div>المادة: {section.classDescription}</div>
-            <div>المعلم: {section.teacherId.name}</div>
+            <div>المعلم: {section.teacherId?.name || 'Unknown'}</div>
             <ButtonText color={section.color}>اختر</ButtonText>
           </SectionButton>
         ))}

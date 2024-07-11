@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
- 
+import { useNavigate } from 'react-router-dom';
 import QoranIcon from '../assets/QoranIcon.svg';
 
 export default function Register() {
@@ -10,6 +10,7 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
+  const navigate = useNavigate(); // Use useNavigate for redirection
 
   const handleSignup = async () => {
     if (password !== confirmPassword) {
@@ -24,6 +25,14 @@ export default function Register() {
       console.log('Registration successful:', response.data.message);
       setErrorMessage('');
       setSuccessMessage('Registration successful!');
+
+      // Store the token in localStorage
+      
+
+
+
+      // Redirect to the desired page
+      navigate('/login');
     } catch (error) {
       console.error('There was an error registering!', error);
       setErrorMessage('Registration failed. Please try again.');

@@ -5,6 +5,7 @@ import { AuthProvider } from './context/AuthContext';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import ChooseClasse from './pages/ChooseClassPage';
 const App = () => (
   <BrowserRouter>
     
@@ -13,6 +14,7 @@ const App = () => (
         <Route exact path='/' element={<HomePage/>} />
          <Route path='/login' element={<LoginPage/>} />
          <Route path='/signup' element={<RegisterPage/>} />
+         <Route path='/chooseclass' element={<ChooseClasse/>} />
         {/* <Route path='/channel/:id' element={<ChannelDetail />} />
         <Route path='/search/:searchTerm' element={<SearchFeed />} /> */} 
       </Routes>
