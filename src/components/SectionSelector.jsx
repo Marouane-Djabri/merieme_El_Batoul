@@ -4,7 +4,7 @@ import styled, { keyframes } from 'styled-components';
 import { useAuth } from '../context/AuthContext';
 import { jwtDecode } from "jwt-decode";
 
-
+import { useNavigate } from 'react-router-dom';
 // Define the hover animation
 const hoverAnimation = keyframes`
   from {
@@ -56,7 +56,7 @@ const ButtonContainer = styled.div`
 
 const SectionSelector = () => {
   const [sections, setSections] = useState([]);
-  
+  const navigate = useNavigate(); // Use useNavigate for redirection
   useEffect(() => {
     const fetchClasses = async () => {
       try {
@@ -75,25 +75,25 @@ const SectionSelector = () => {
   }, []);
 
   const handleEnroll = async (classId) => {
-    // Fetch the token directly from local storage
     const token = localStorage.getItem('accessToken');
     console.log('Token from local storage:', token);
-
+  
     if (!token) {
       console.error('User not logged in or token not available');
       return;
     }
-
+  
     try {
       const decodedToken = jwtDecode(token);
       const studentId = decodedToken.userId;
-
+  
       if (!studentId) {
         console.error('Student ID not available in token');
         return;
       }
-
-      const response = await axios.post('http://localhost:5000/api/enrollments', {
+  
+      // Enroll the student
+      const enrollResponse = await axios.post('http://localhost:5000/api/enrollments', {
         classId,
         studentId,
       }, {
@@ -101,11 +101,27 @@ const SectionSelector = () => {
           Authorization: `Bearer ${token}`
         }
       });
-      console.log('Enrolled successfully:', response.data);
+      console.log('Enrolled successfully:', enrollResponse.data);
+  
+      // Create a note for the enrolled class
+      const noteResponse = await axios.post('http://localhost:5000/api/notes', {
+        classId,
+        studentId,
+        content: 'first creation ',
+        mark: '0'
+      }, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
+      
+      console.log('Note created successfully:', noteResponse.data);
+      navigate(`/classDetail/${classId}`);
     } catch (error) {
-      console.error('Error enrolling in class:', error);
+      console.error('Error in creating note :', error);
     }
   };
+  
 
   return (
     <Container>

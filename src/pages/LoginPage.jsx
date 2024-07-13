@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import QoranIcon from '../assets/QoranIcon.svg';
+import { jwtDecode } from "jwt-decode";
 
 export default function LoginPage() {
   const [username, setUsername] = useState('');
@@ -13,19 +14,21 @@ export default function LoginPage() {
     try {
       const response = await axios.post('http://localhost:5000/api/login', { username, password });
 
-      // Access the token from response data
-      const token = response.data.token;
-      
-      // Store the token in localStorage
-      localStorage.setItem('accessToken', token);
-      
-      // Redirect or update the state to indicate the user is logged in
-      console.log('Login successful');
-      setSuccessMessage('Login successful!');
-      console.log(response.data);
+      // Access the token and classId from response data
+      const { token, classId } = response.data;
 
-      // Redirect to the desired page
-      navigate('/chooseclass');
+      // Store the token and classId in localStorage
+      localStorage.setItem('accessToken', token);
+      if (classId) {
+        localStorage.setItem('classId', classId);
+      }
+
+      // Redirect based on the classId
+      if (classId) {
+        navigate(`/classDetail/${classId}`);
+      } else {
+        navigate('/chooseclass');
+      }
     } catch (error) {
       console.error('There was an error logging in!', error);
     }
