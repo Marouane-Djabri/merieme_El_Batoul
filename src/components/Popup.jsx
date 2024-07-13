@@ -23,7 +23,7 @@ const PopUp = ({ student, onClose }) => {
         <div className="flex justify-end">
           <button onClick={onClose} className="text-gray-500">&times;</button>
         </div>
-        <div className="mb-4 text-center text-2xl font-bold text-gray-700">الطلب</div>
+        <div className="mb-4 text-center text-2xl font-bold text-gray-700">{student.name}</div>
         <table className="w-full border-collapse">
           <thead>
             <tr>
@@ -34,36 +34,14 @@ const PopUp = ({ student, onClose }) => {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td className="border p-2">
-                <input
-                  type="text"
-                  name="from"
-                  className="w-full p-1"
-                />
-              </td>
-              <td className="border p-2">
-                <input
-                  type="text"
-                  name="to"
-                  className="w-full p-1"
-                />
-              </td>
-              <td className="border p-2">
-                <input
-                  type="text"
-                  name="grade"
-                  className="w-full p-1"
-                />
-              </td>
-              <td className="border p-2">
-                <input
-                  type="text"
-                  name="report"
-                  className="w-full p-1"
-                />
-              </td>
-            </tr>
+            {student.notebooks.map((notebook, index) => (
+              <tr key={index}>
+                <td className="border p-2">{notebook.from}</td>
+                <td className="border p-2">{notebook.to}</td>
+                <td className="border p-2">{notebook.grade}</td>
+                <td className="border p-2">{notebook.report}</td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>

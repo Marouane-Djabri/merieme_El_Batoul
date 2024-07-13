@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import QoranIcon from '../assets/QoranIcon.svg';
 import { jwtDecode } from "jwt-decode";
-
+import StudentListPage from './StudentListPage';
 export default function LoginPage() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -13,7 +13,7 @@ export default function LoginPage() {
   const handleLogin = async () => {
     try {
       const response = await axios.post('http://localhost:5000/api/login', { username, password });
-
+ 
       // Access the token and classId from response data
       const { token, classId } = response.data;
 
@@ -23,17 +23,26 @@ export default function LoginPage() {
         localStorage.setItem('classId', classId);
       }
 
-      // Redirect based on the classId
-      if (classId) {
-        navigate(`/classDetail/${classId}`);
+      // Decode the token to get user role
+      const decodedToken = jwtDecode(token);
+      const userRole = "teacher"; // Assuming the role is stored under 'role'
+      console.log("le role" ,userRole);
+      // Redirect based on the user role
+      if (userRole === 'teacher') {
+        navigate('/studentlist'); // Change '/teacherPage' to your desired teacher page route
+      } else if (userRole === 'student') {
+        if (classId) {
+          navigate(`/classDetail/${classId}`);
+        } else {
+          navigate('/chooseclass');
+        }
       } else {
-        navigate('/chooseclass');
+        navigate('/unauthorized'); // Optional: handle other roles or unauthorized access
       }
     } catch (error) {
       console.error('There was an error logging in!', error);
     }
   };
-
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="BOX bg-[#E5E7E6] w-full sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2 rounded-3xl p-4" style={{ marginTop: '2rem', marginBottom: '2rem' }}>

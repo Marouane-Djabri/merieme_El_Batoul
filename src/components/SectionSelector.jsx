@@ -3,8 +3,8 @@ import axios from 'axios';
 import styled, { keyframes } from 'styled-components';
 import { useAuth } from '../context/AuthContext';
 import { jwtDecode } from "jwt-decode";
-
 import { useNavigate } from 'react-router-dom';
+
 // Define the hover animation
 const hoverAnimation = keyframes`
   from {
@@ -53,16 +53,29 @@ const ButtonContainer = styled.div`
   margin-top: 40px;
 `;
 
+const getRandomColor = () => {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+};
 
 const SectionSelector = () => {
   const [sections, setSections] = useState([]);
-  const navigate = useNavigate(); // Use useNavigate for redirection
+  const navigate = useNavigate();
+
   useEffect(() => {
     const fetchClasses = async () => {
       try {
         const response = await axios.get('http://localhost:5000/api/classes');
         if (Array.isArray(response.data)) {
-          setSections(response.data);
+          const sectionsWithColors = response.data.map(section => ({
+            ...section,
+            color: getRandomColor(),
+          }));
+          setSections(sectionsWithColors);
         } else {
           console.error('Expected array but received:', response.data);
         }
