@@ -120,7 +120,7 @@ const SectionSelector = () => {
       const noteResponse = await axios.post('http://localhost:5000/api/notes', {
         classId,
         studentId,
-        content: 'first creation ',
+        content: 'finbnbnbn',
         mark: '0'
       }, {
         headers: {

@@ -25,7 +25,8 @@ export default function LoginPage() {
 
       // Decode the token to get user role
       const decodedToken = jwtDecode(token);
-      const userRole = "teacher"; // Assuming the role is stored under 'role'
+      // const userRole =decodedToken.role; // Assuming the role is stored under 'role'
+      const userRole ="teacher";
       console.log("le role" ,userRole);
       // Redirect based on the user role
       if (userRole === 'teacher') {
