@@ -39,7 +39,7 @@ import PropTypes from 'prop-types';
 
 const StudentList = ({ students, onStudentClick }) => (
   <div>
-    <h2>Students List</h2>
+    
     <ul>
       {students.map((student, index) => (
         <li key={index} onClick={() => onStudentClick(student)}>

@@ -8,6 +8,7 @@ import RegisterPage from './pages/RegisterPage';
 import ChooseClasse from './pages/ChooseClassPage';
 import ClassDetail from './components/ClassDetail';
 import StudentListPage from './pages/StudentListPage';
+import LessonUploadPage from './components/LessonUploadPage';
 const App = () => (
   <BrowserRouter>
     
@@ -19,6 +20,7 @@ const App = () => (
          <Route path='/chooseclass' element={<ChooseClasse/>} />
          <Route path='/classDetail/:classId' element={<ClassDetail/>} />
          <Route path='/studentlist' element={<StudentListPage/>} />
+         <Route path='/upload' element={<LessonUploadPage/>} />
         {/* <Route path='/channel/:id' element={<ChannelDetail />} />
         <Route path='/search/:searchTerm' element={<SearchFeed />} /> */} 
       </Routes>

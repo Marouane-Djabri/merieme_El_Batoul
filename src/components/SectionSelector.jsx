@@ -144,7 +144,7 @@ const SectionSelector = () => {
           <SectionButton key={section._id} onClick={() => handleEnroll(section._id)}>
             <div>{section.className}</div>
             <div>المادة: {section.classDescription}</div>
-            <div>المعلم: {section.teacherId?.name || 'Unknown'}</div>
+            
             <ButtonText color={section.color}>اختر</ButtonText>
           </SectionButton>
         ))}

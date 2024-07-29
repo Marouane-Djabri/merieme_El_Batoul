@@ -40,10 +40,10 @@ const CreateClassPopup = ({ onClose, onClassCreated }) => {
         <div className="flex justify-end">
           <button onClick={onClose} className="text-gray-500 text-3xl">&times;</button>
         </div>
-        <div className="mb-8 text-center text-4xl font-bold text-gray-700">Create New Class</div>
+        <div className="mb-8 text-center text-4xl font-bold text-gray-700">إنشاء الفصل</div>
         <form onSubmit={handleSubmit} className="max-w-xl mx-auto">
           <div className="mb-6">
-            <label className="block text-gray-700 mb-2 text-lg">Class Name</label>
+            <label className="block text-gray-700 mb-2 text-lg">اسم الفصل</label>
             <input
               type="text"
               value={className}
@@ -53,7 +53,7 @@ const CreateClassPopup = ({ onClose, onClassCreated }) => {
             />
           </div>
           <div className="mb-6">
-            <label className="block text-gray-700 mb-2 text-lg">Class Description</label>
+            <label className="block text-gray-700 mb-2 text-lg">معلومات عن الفصل</label>
             <textarea
               value={classDescription}
               onChange={(e) => setClassDescription(e.target.value)}

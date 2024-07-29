@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link  } from 'react-router-dom';
 import QoranIcon from '../assets/QoranIcon.svg';
 
 export default function Register() {
@@ -83,7 +83,9 @@ export default function Register() {
                 <button className="bg-orange-900 p-2 font-bold text-white rounded-lg w-full" onClick={handleSignup}>انشء حساب</button>
               </div>
               <div className="mt-2">
-                <p className="text-right font-bold text-sm">لديك حساب? سجل الدخول</p>
+              <p className="text-right font-bold text-sm">
+                  لديك حساب? <Link to="/login" className="text-orange-900">سجل الدخول</Link>
+                </p>
               </div>
             </div>
           </div>

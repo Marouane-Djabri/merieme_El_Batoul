@@ -25,8 +25,8 @@ export default function LoginPage() {
 
       // Decode the token to get user role
       const decodedToken = jwtDecode(token);
-      // const userRole =decodedToken.role; // Assuming the role is stored under 'role'
-      const userRole ="teacher";
+      const userRole =decodedToken.role; // Assuming the role is stored under 'role'
+      // const userRole ="teacher";
       console.log("le role" ,userRole);
       // Redirect based on the user role
       if (userRole === 'teacher') {
@@ -71,7 +71,7 @@ export default function LoginPage() {
                 <button className="bg-orange-900 p-2 font-bold text-white rounded-lg w-full" onClick={handleLogin}>تسجبل الدخول</button>
               </div>
               <div className="mt-2">
-                <p className="text-right font-bold text-sm">هل نسيت كلمة المرور</p>
+                <p className="text-right font-bold text-sm">      </p>
               </div>
             </div>
           </div>
