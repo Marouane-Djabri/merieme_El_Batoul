@@ -2034,6 +2034,7 @@ const PopUp = ({ student, onClose }) => {
     setLoading(true);
     setError(null);
     try {
+      console.log("the new m  rkkk contenttttt",newContent)
       const token = localStorage.getItem('accessToken');
       const response = await axios.put(
         `http://localhost:5000/api/notes/${id}`,
