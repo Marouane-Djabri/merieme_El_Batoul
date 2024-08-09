@@ -18,11 +18,11 @@ export default function Register() {
       return;
     }
 
-    const role = 'student';  // Assign the default role
+    const role = 'teacher';  // Assign the default role
 
     try {
       const response = await axios.post('http://localhost:5000/api/register', { username, email, password, role });
-      console.log('Registration successful:', response.data.message);
+      console.log('Registration successfulfffffffffff:', response.data.message);
       setErrorMessage('');
       setSuccessMessage('Registration successful!');
 
