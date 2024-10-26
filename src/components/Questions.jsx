@@ -57,11 +57,10 @@ export default function Questions (){
             <h1 className="font-semibold text-xl py-2">اسئلة شائعة</h1>
    <div className="bg-white rounded-md text-right p-4 space-y-5 ">
     <AccordianMenu title = "هل الاكاديمية مجانية بالكامل" answer= 'نعم هي مجانية بالكامل' />
-    <AccordianMenu title = "هل الاكاديمية مجانية بالكامل" answer= 'نعم هي مجانية بالكامل' />
-    <AccordianMenu title = "هل الاكاديمية مجانية بالكامل" answer= 'نعم هي مجانية بالكامل' />
-    <AccordianMenu title = "هل الاكاديمية مجانية بالكامل" answer= 'نعم هي مجانية بالكامل' />
-    <AccordianMenu title = "هل الاكاديمية مجانية بالكامل" answer= 'نعم هي مجانية بالكامل' />
-    <AccordianMenu title = "هل الاكاديمية مجانية بالكامل" answer= 'نعم هي مجانية بالكامل' />
+    <AccordianMenu title = "هل يوجد قسم خاص للنساء فقط " answer= 'نعم يوجد' />
+    <AccordianMenu title = "هل يوجد قسم خاص للبراعم " answer= 'نعم يوجد' />
+    <AccordianMenu title = "هل يوجد قسم للرجال" answer= 'نعم يوجد' />
+    
  
     
    </div>

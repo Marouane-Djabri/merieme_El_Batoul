@@ -19,7 +19,7 @@ export default function Program (){
             </div>
             {/* second div  */}
         <div className=" text-right p-4">
-            <p className=''>.برنامج أكاديمية زاد يوفر سبعة مجالات علميّة للمشاركين فيه لتعزيز فهمٍ وسطيّ ص
+            <p className=''>.برنامج أكاديمية   يوفر سبعة مجالات علميّة للمشاركين فيه لتعزيز فهمٍ وسطيّ ص
                 حيح متدرجٌ للإسلام مقترنٌ بالدّليل وبأدوات عصريّة وأسلوب سهل وممتع</p>
         </div>
         {/* third div  */}
@@ -27,25 +27,25 @@ export default function Program (){
         <div className="relative shadow-2xl ">
         <img className="w-64 h-56 object-cover" src={islamicImage} alt="Islamic" />
         <div className="absolute inset-0 flex items-center justify-center text-orange-900 font-bold text-xl">
-          حفظ
+        حفظ و تفسير
         </div>
         </div>
         <div className="relative shadow-2xl">
         <img className="w-64 h-56 object-cover " src={islamicImage} alt="Islamic" />
         <div className="absolute inset-0 flex items-center justify-center text-orange-900 font-bold text-xl">
-          تفسير
+        تصحيح التلاوة 
         </div>
         </div>
         <div className="relative shadow-2xl">
         <img className="w-64 h-56 object-cover " src={islamicImage} alt="Islamic" />
         <div className="absolute inset-0 flex items-center justify-center text-orange-900 font-bold text-xl">
-          احكام
+        مقرأة 12 ساعة على مدار اليوم
         </div>
         </div>
         <div className="relative shadow-2xl">
         <img className="w-64 h-56 object-cover " src={islamicImage} alt="Islamic" />
         <div className="absolute inset-0 flex items-center justify-center text-orange-900 font-bold text-xl">
-          متدرجٌ
+        دروس عقيدة 
         </div>
         </div>
          </div>

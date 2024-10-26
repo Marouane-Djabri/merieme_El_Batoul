@@ -12,9 +12,9 @@ export default function Disc_video ()
           </div>
           <div className="w-full md:w-1/2 p-4 ">
             <h1 className="font-extrabold text-2xl text-right py-4 text-orange-900">عن برنامج اكاديمية مريم البتول</h1>
-            <p className="text-right py-4">برنامجُ أكاديميةِ زادٍ برنامجٌ تلفزيونيٌّ إلكترونيٌّ تفاعليٌّ، يهدفُ إلى تقريبِ 
+            <p className="text-right py-4">برنامجُ أكاديميةِ  برنامجٌ تلفزيونيٌّ إلكترونيٌّ تفاعليٌّ، يهدفُ إلى تقريبِ 
               العلمِ الشرعيِّ للراغبين فيه، يوفّر لمتابعيه منصَّةً
-              تفاعلية عن طريق شبكة الإنترنت، وعن طريق قناة زاد.</p>
+              تفاعلية عن طريق شبكة الإنترنت، وعن طريق قناة .</p>
             <div className='flex items-center justify-end py-2'>
               <img className='w-6 h-6' src={fleche} alt='Arrow' />
               <h1 className="text-right text-orange-900 pl-4">اكتشف المزيد</h1>

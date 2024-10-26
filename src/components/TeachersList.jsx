@@ -30,7 +30,7 @@ const TeachersList = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Teachers List</h1>
+      <h1 className="text-2xl font-bold mb-4">قائمة الاساتذة</h1>
       {Array.isArray(teachers) && teachers.length > 0 ? (
         <ul>
           {teachers.map((teacher) => (
@@ -41,7 +41,7 @@ const TeachersList = () => {
                 onClick={() => deleteTeacher(teacher._id)}
                 className="bg-red-500 text-white px-4 py-2 mt-2 rounded hover:bg-red-600"
               >
-                Delete Teacher
+               حظر المعلمة 
               </button>
             </li>
           ))}

@@ -120,12 +120,7 @@ import HeaderStudent from './HeaderStudent';
     <div className="p-4">
       <HeaderStudent />
       <table className="w-full border-collapse table-auto">
-        <thead>
-          <tr className="bg-gray-200">
-            <th className="border border-gray-300 p-2 text-right">التقدير</th>
-            <th className="border border-gray-300 p-2 text-right">الحفظ</th>
-          </tr>
-        </thead>
+        
         <tbody>
          {notes.map((notebook) => (
                   <React.Fragment key={notebook._id}>
@@ -161,7 +156,7 @@ import HeaderStudent from './HeaderStudent';
                 <td colSpan="2" className="p-2">
                   <div>
                   <div className="mt-8">
-            <h2 className="text-xl font-bold text-gray-700 mb-4">Previous Lessons</h2>
+           
             {lessons.length > 0 ? (
               <ul className="space-y-4">
                 {lessons.map((lesson) => (
@@ -170,7 +165,7 @@ import HeaderStudent from './HeaderStudent';
                     <p>{lesson.content}</p>
                     {lesson.files && lesson.files.length > 0 && (
                       <div className="mt-2">
-                        <h4 className="font-semibold">Files:</h4>
+                        <h4 className="font-semibold">ملفات</h4>
                         <ul className="list-disc list-inside">
                           {lesson.files.map((file, index) => (
                             <li key={index}>
@@ -186,7 +181,7 @@ import HeaderStudent from './HeaderStudent';
                 ))}
               </ul>
             ) : (
-              <p>No lessons available</p>
+              <p></p>
             )}
           </div>
                   </div>

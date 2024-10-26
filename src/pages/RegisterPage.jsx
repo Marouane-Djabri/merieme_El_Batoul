@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-import { useNavigate,Link  } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import QoranIcon from '../assets/QoranIcon.svg';
 
 export default function Register() {
@@ -18,19 +18,15 @@ export default function Register() {
       return;
     }
 
-    const role = 'teacher';  // Assign the default role
+    // Determine role based on username prefix
+    const role = username.startsWith('أستاذة') || username.startsWith('أستاذ') ? 'teacher' : 'student';
 
     try {
       const response = await axios.post('http://localhost:5000/api/register', { username, email, password, role });
-      console.log('Registration successfulfffffffffff:', response.data.message);
+      console.log('Registration successful:', response.data.message);
       setErrorMessage('');
       setSuccessMessage('Registration successful!');
-
-      // Store the token in localStorage
-      
-
-
-
+      console.log("le roleee",role);
       // Redirect to the desired page
       navigate('/login');
     } catch (error) {
@@ -46,11 +42,8 @@ export default function Register() {
         <div className="flex flex-col h-full justify-between">
           <header className="flex p-2 justify-between">
             <div className="order-last mr-2 flex items-stretch">
-              <img src={QoranIcon} className="w-10 h-8 self-end order-last" />
+              <img src={QoranIcon} className="w-10 h-8 self-end order-last" alt="Qoran Icon" />
               <h1 className="font-bold text-2xl text-orange-900">البتول</h1>
-            </div>
-            <div className="mt-0 mr-6 ml-6 flex space-x-2">
-              
             </div>
           </header>
 
@@ -83,7 +76,7 @@ export default function Register() {
                 <button className="bg-orange-900 p-2 font-bold text-white rounded-lg w-full" onClick={handleSignup}>انشء حساب</button>
               </div>
               <div className="mt-2">
-              <p className="text-right font-bold text-sm">
+                <p className="text-right font-bold text-sm">
                   لديك حساب? <Link to="/login" className="text-orange-900">سجل الدخول</Link>
                 </p>
               </div>

@@ -119,7 +119,7 @@ export default function LessonUploadPage() {
           <form onSubmit={handleLessonSubmit}>
             <div>
               <label className="block mb-2 text-sm font-bold text-gray-700">
-                Lesson Name:
+              اسم الدرس 
               </label>
               <input
                 type="text"
@@ -130,7 +130,7 @@ export default function LessonUploadPage() {
             </div>
             <div>
               <label className="block mb-2 text-sm font-bold text-gray-700">
-                Content:
+              معلومات او شروحات حول الدرس 
               </label>
               <textarea
                 value={content}
@@ -140,7 +140,7 @@ export default function LessonUploadPage() {
             </div>
             <div>
               <label className="block mb-2 text-sm font-bold text-gray-700">
-                Files:
+              ملفات
               </label>
               <input
                 type="file"
@@ -153,11 +153,11 @@ export default function LessonUploadPage() {
               type="submit"
               className="bg-blue-500 text-white px-4 py-2 rounded mt-4"
             >
-              Upload Lesson
+             تحميل الملف
             </button>
           </form>
           <div className="mt-8">
-            <h2 className="text-xl font-bold text-gray-700 mb-4">Previous Lessons</h2>
+            <h2 className="text-xl font-bold text-gray-700 mb-4">الدروس السابقة </h2>
             {lessons.length > 0 ? (
               <ul className="space-y-4">
                 {lessons.map((lesson) => (
@@ -188,7 +188,7 @@ export default function LessonUploadPage() {
                 ))}
               </ul>
             ) : (
-              <p>No lessons available</p>
+              <p></p>
             )}
           </div>
         </div>

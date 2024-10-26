@@ -10,7 +10,7 @@ export default function Register() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [successMessage, setSuccessMessage] = useState('');
-  const navigate = useNavigate(); // Use useNavigate for redirection
+  const navigate = useNavigate();
 
   const handleSignup = async () => {
     if (password !== confirmPassword) {
@@ -18,17 +18,17 @@ export default function Register() {
       return;
     }
 
-    const role = 'student';  // Assign the default role
+    // Check if username starts with "أستاذة" or "أستاذ"
+    const role = username.startsWith("أستاذة") || username.startsWith("أستاذ") ? "teacher" : "student";
 
     try {
+
       const response = await axios.post('http://localhost:5000/api/register', { username, email, password, role });
       console.log('Registration successful:', response.data.message);
       setErrorMessage('');
       setSuccessMessage('Registration successful!');
 
-      // Store the token in localStorage
-
-      // Redirect to the desired page
+      // Redirect to the login page
       navigate('/login');
     } catch (error) {
       console.error('There was an error registering!', error);
@@ -46,9 +46,6 @@ export default function Register() {
               <img src={QoranIcon} className="w-10 h-8 self-end order-last" />
               <h1 className="font-bold text-2xl text-orange-900">البتول</h1>
             </div>
-            <div className="mt-0 mr-6 ml-6 flex space-x-2">
-              
-            </div>
           </header>
 
           <div className="flex justify-center items-center flex-grow">
@@ -56,18 +53,10 @@ export default function Register() {
               <div className="py-6">
                 <h1 className="font-bold text-3xl text-right text-orange-900">هيا</h1>
                 <h1 className="font-bold text-3xl text-right">نبدا في التعلم</h1>
-                <p className="text-right">سجل الدخول او انشئء حساب لتكمل</p>
+                <p className="text-right">سجل الدخول او انشئ حساب لتكمل</p>
               </div>
-              {errorMessage && (
-                <div className="text-red-500 text-center mb-4">
-                  {errorMessage}
-                </div>
-              )}
-              {successMessage && (
-                <div className="text-green-500 text-center mb-4">
-                  {successMessage}
-                </div>
-              )}
+              {errorMessage && <div className="text-red-500 text-center mb-4">{errorMessage}</div>}
+              {successMessage && <div className="text-green-500 text-center mb-4">{successMessage}</div>}
               <label className="block mb-2 text-right">الايميل</label>
               <input className="border p-2 rounded-lg w-full" placeholder="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
               <label className="block mb-2 text-right">اسم المستخدم</label>
@@ -77,7 +66,7 @@ export default function Register() {
               <label className="block mb-2 text-right">تاكيد كلمة المرور</label>
               <input className="border p-2 rounded-lg w-full" placeholder="confirm password" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
               <div className="flex justify-center mt-2">
-                <button className="bg-orange-900 p-2 font-bold text-white rounded-lg w-full" onClick={handleSignup}>انشء حساب</button>
+                <button className="bg-orange-900 p-2 font-bold text-white rounded-lg w-full" onClick={handleSignup}>انشئ حساب</button>
               </div>
               <div className="mt-2">
                 <p className="text-right font-bold text-sm">
