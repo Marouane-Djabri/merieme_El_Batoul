@@ -44,7 +44,6 @@ export default function HomePage ()
    <UpperBar/>
    <Hero/>
    <DescriptivePara/>
-   <Information/>
    <Prog/>
    <Questions/>
   <Avis/>
