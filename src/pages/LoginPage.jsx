@@ -12,7 +12,7 @@ export default function LoginPage() {
 
   const handleLogin = async () => {
     try {
-      const response = await axios.post('http://localhost:5000/api/login', { username, password });
+      const response = await axios.post('https://merieme-elbatoul-platforme-rt37.vercel.app/api/login', { username, password });
  
       // Access the token and classId from response data
       const { token, classId } = response.data;
