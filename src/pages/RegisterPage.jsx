@@ -22,7 +22,7 @@ export default function Register() {
     const role = username.startsWith('أستاذة') || username.startsWith('أستاذ') ? 'teacher' : 'student';
 
     try {
-      const response = await axios.post('http://localhost:5000/api/register', { username, email, password, role });
+      const response = await axios.post('https://merieme-elbatoul-platfor-git-6d50aa-marouanes-projects-750fa139.vercel.app/api/register', { username, email, password, role });
       console.log('Registration successful:', response.data.message);
       setErrorMessage('');
       setSuccessMessage('Registration successful!');
